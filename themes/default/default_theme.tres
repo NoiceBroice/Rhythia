@@ -1,3 +1,17 @@
-[gd_resource type="Theme" format=3 uid="uid://u4ow6wssdvm4"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://u4ow6wssdvm4"]
+
+[ext_resource type="StyleBox" uid="uid://sjtpb2u6ih5e" path="res://themes/default/button/disabled_button.tres" id="1_xu4cx"]
+[ext_resource type="StyleBox" uid="uid://cydiary7we3p4" path="res://themes/default/button/normal_button.tres" id="2_55xnb"]
+[ext_resource type="StyleBox" uid="uid://ccw0koxm0piw0" path="res://themes/default/button/pressed_button.tres" id="3_3l6es"]
+[ext_resource type="StyleBox" uid="uid://dv4cx6dsraxkp" path="res://themes/default/button/check_button/normal_check_button.tres" id="4_6eagn"]
+[ext_resource type="StyleBox" uid="uid://bwukjydmhjkw4" path="res://themes/default/panel/normal_panel.tres" id="5_g628g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xi2r2"]
 
 [resource]
+Button/styles/disabled = ExtResource("1_xu4cx")
+Button/styles/normal = ExtResource("2_55xnb")
+Button/styles/pressed = ExtResource("3_3l6es")
+CheckButton/styles/normal = ExtResource("4_6eagn")
+CheckButton/styles/pressed = SubResource("StyleBoxEmpty_xi2r2")
+Panel/styles/panel = ExtResource("5_g628g")

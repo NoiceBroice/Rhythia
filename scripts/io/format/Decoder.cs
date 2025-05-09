@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Rhythia.Maps.Format;
+namespace Rhythia.IO.Format;
 
 
 public abstract class Decoder<TOutput> : Decoder

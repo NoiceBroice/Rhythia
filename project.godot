@@ -11,7 +11,12 @@ config_version=5
 [application]
 
 config/name="Rhythia"
+run/main_scene="uid://bueehb1dt4bun"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
+
+[autoload]
+
+RhythiaGame="*res://scripts/RhythiaGame.cs"
 
 [dotnet]
 

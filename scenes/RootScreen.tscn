@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://bueehb1dt4bun"]
+[gd_scene load_steps=3 format=3 uid="uid://bueehb1dt4bun"]
+
+[ext_resource type="Theme" uid="uid://u4ow6wssdvm4" path="res://themes/default/default_theme.tres" id="1_hhsmk"]
+[ext_resource type="Script" uid="uid://bfw8m6j4q2jwe" path="res://scripts/ui/RootScreen.cs" id="2_cp5u5"]
 
 [node name="RootScreen" type="Control"]
 layout_mode = 3
@@ -7,3 +10,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_hhsmk")
+script = ExtResource("2_cp5u5")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.181
+anchor_bottom = 0.062
+offset_right = -0.512009
+offset_bottom = -0.176003
+text = "Button"
