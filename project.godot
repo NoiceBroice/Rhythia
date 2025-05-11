@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Rhythia"
-run/main_scene="uid://calp2ejapr82w"
+run/main_scene="uid://xvt6ucm5ywrm"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 
 [autoload]
