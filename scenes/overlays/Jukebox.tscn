@@ -1,0 +1,97 @@
+[gd_scene load_steps=7 format=3 uid="uid://bhfwd2r3hlyys"]
+
+[ext_resource type="Theme" uid="uid://u4ow6wssdvm4" path="res://themes/default/default_theme.tres" id="1_w8s5h"]
+[ext_resource type="StyleBox" uid="uid://qiagiil3mxc2" path="res://themes/default/jukebox/normal_jukebox.tres" id="2_6kg5x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6kg5x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q1yba"]
+bg_color = Color(0.831373, 0.145098, 0.12549, 0.341176)
+border_color = Color(0.0430392, 0.0430392, 0.0430391, 1)
+border_blend = true
+corner_radius_bottom_left = 5
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w8s5h"]
+bg_color = Color(0.831373, 0.145098, 0.12549, 0.341176)
+border_color = Color(0.0430392, 0.0430392, 0.0430391, 1)
+border_blend = true
+anti_aliasing = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_q1yba"]
+
+[node name="Jukebox" type="Panel"]
+anchors_preset = -1
+anchor_right = 0.217
+anchor_bottom = 0.081
+offset_right = -0.640015
+offset_bottom = 0.519997
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_w8s5h")
+theme_override_styles/panel = ExtResource("2_6kg5x")
+
+[node name="Visualizer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="V1" type="ProgressBar" parent="Visualizer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.364
+anchor_right = 0.019
+anchor_bottom = 1.0
+offset_top = -0.0320015
+offset_right = 0.0960002
+theme_override_styles/background = SubResource("StyleBoxEmpty_6kg5x")
+theme_override_styles/fill = SubResource("StyleBoxFlat_q1yba")
+value = 100.0
+fill_mode = 3
+show_percentage = false
+
+[node name="V2" type="ProgressBar" parent="Visualizer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.019
+anchor_top = 0.364
+anchor_right = 0.038
+anchor_bottom = 1.0
+offset_left = 0.0960002
+offset_top = -0.0320015
+offset_right = 0.192
+theme_override_styles/background = SubResource("StyleBoxEmpty_6kg5x")
+theme_override_styles/fill = SubResource("StyleBoxFlat_w8s5h")
+value = 100.0
+fill_mode = 3
+show_percentage = false
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.818
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 0.0159988
+offset_right = -7.99997
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 20.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.364
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -7.99997
+offset_bottom = -0.0320015
+text = "Song - Artist"
+label_settings = SubResource("LabelSettings_q1yba")

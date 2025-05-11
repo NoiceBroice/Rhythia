@@ -11,13 +11,24 @@ config_version=5
 [application]
 
 config/name="Rhythia"
-run/main_scene="uid://bueehb1dt4bun"
+run/main_scene="uid://calp2ejapr82w"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 
 [autoload]
 
 RhythiaGame="*res://scripts/RhythiaGame.cs"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=1
+
 [dotnet]
 
 project/assembly_name="Rhythia"
+
+[rendering]
+
+textures/lossless_compression/force_png=true
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

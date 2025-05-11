@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://calp2ejapr82w"]
+
+[ext_resource type="Theme" uid="uid://u4ow6wssdvm4" path="res://themes/default/default_theme.tres" id="1_eeil4"]
+[ext_resource type="PackedScene" uid="uid://bhfwd2r3hlyys" path="res://scenes/overlays/Jukebox.tscn" id="2_1lk3f"]
+
+[node name="MenuScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_eeil4")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Image" type="TextureRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Jukebox" parent="." instance=ExtResource("2_1lk3f")]
+layout_mode = 1
+anchor_left = 0.771
+anchor_top = 0.881
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.320068
+offset_top = 0.519958
+offset_right = -24.0
+offset_bottom = -40.0
+grow_horizontal = 1
+grow_vertical = 1
