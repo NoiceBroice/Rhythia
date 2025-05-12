@@ -1,4 +1,4 @@
-public abstract class Modifier
+public class Mod
 {
     public virtual void ModifyNote() {}
 }

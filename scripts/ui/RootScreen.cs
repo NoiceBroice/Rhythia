@@ -19,6 +19,6 @@ public partial class RootScreen : Control
     public override void _Ready()
     {
         Game = GetTree().Root.GetNode<RhythiaGame>("RhythiaGame");
-        GD.Print(Game.Test);
+        
     }
 }

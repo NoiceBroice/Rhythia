@@ -1,8 +1,6 @@
 # Rhythia
 Rhythm-based aim game
 
-> Potential candidate for new client
-
 ## How to Install
 #### TODO
 

@@ -6,7 +6,10 @@ namespace Rhythia;
 [GlobalClass]
 public partial class RhythiaGame : Node
 {
-    public string Test { get; set; } = "Test";
+
+    [Export]
+    public RhythiaSkin SelectedSkin { get; set; }
+
     public override void _Ready()
     {
         

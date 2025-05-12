@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://blroilcnav38m"]
+[gd_scene load_steps=9 format=3 uid="uid://blroilcnav38m"]
 
 [ext_resource type="Texture2D" uid="uid://dho713jhwbw5g" path="res://assets/grid.png" id="1_iani1"]
+[ext_resource type="Script" uid="uid://re3sjvwfkl2p" path="res://scripts/ui/play/play_scene.gd" id="1_pennv"]
+[ext_resource type="Texture2D" uid="uid://wmokhg0ge5m8" path="res://assets/cursor.png" id="2_qnccb"]
+[ext_resource type="Script" uid="uid://dl324jvs252d" path="res://scripts/ui/play/Player.cs" id="4_samdx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qnccb"]
 transparency = 1
@@ -11,13 +14,35 @@ albedo_texture = ExtResource("1_iani1")
 material = SubResource("StandardMaterial3D_qnccb")
 size = Vector2(4, 4)
 
-[node name="PlayScreen" type="Node3D"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pennv"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("2_qnccb")
+
+[sub_resource type="QuadMesh" id="QuadMesh_samdx"]
+material = SubResource("StandardMaterial3D_pennv")
+size = Vector2(0.25, 0.25)
+
+[node name="PlayScreen" type="Node3D" node_paths=PackedStringArray("camera", "grid", "hud", "player")]
+script = ExtResource("1_pennv")
+camera = NodePath("Camera")
+grid = NodePath("Grid")
+hud = NodePath("HUD")
+player = NodePath("Player")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.5)
+fov = 70.0
+
+[node name="HUD" type="Node3D" parent="."]
 
 [node name="Grid" type="MeshInstance3D" parent="."]
 mesh = SubResource("QuadMesh_pennv")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.5)
-fov = 70.0
+[node name="Cursor" type="MeshInstance3D" parent="Grid"]
+mesh = SubResource("QuadMesh_samdx")
 
-[node name="HUD_Left" type="Node3D" parent="."]
+[node name="Note" type="Node3D" parent="Grid"]
+
+[node name="Player" type="Node" parent="."]
+script = ExtResource("4_samdx")
