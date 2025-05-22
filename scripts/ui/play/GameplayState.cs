@@ -32,7 +32,7 @@ public partial class GameplayState
     /// <summary>
     /// The mods applied to the gameplay
     /// </summary>
-    public readonly IReadOnlyList<Mod> Mods;
+    public readonly IReadOnlyList<IApplicableMod> Mods;
 
     /// <summary>
     /// The gameplay score
@@ -65,12 +65,12 @@ public partial class GameplayState
     public GameplayState(
         IMap map,
         Ruleset ruleset,
-        IReadOnlyList<Mod>? mods = null
+        IReadOnlyList<IApplicableMod>? mods = null
     )
     {
         Map = map;
         Ruleset = ruleset;
-        Mods = mods ?? Array.Empty<Mod>();
+        Mods = mods ?? Array.Empty<IApplicableMod>();
         ScoreProcessor = ruleset.CreateScoreProcessor();
         HealthProcessor = ruleset.CreateHealthProcessor();
         Score = new();

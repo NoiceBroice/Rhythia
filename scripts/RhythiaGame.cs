@@ -4,7 +4,6 @@ using Rhythia.IO;
 using Rhythia.Maps;
 using Rhythia.Rulesets;
 using Rhythia.UI.Play;
-using SimpleInjector;
 using System;
 using System.Collections;
 using System.Collections.Generic;

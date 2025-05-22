@@ -26,7 +26,7 @@ public abstract class Decoder
     
     static Decoder()
     {
-        
+        SSPMDecoder.Register();
     }
 
     /// <summary>

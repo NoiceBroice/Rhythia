@@ -1,5 +1,6 @@
 using Godot;
-using Rhythia.Rulesets.Mods;
+
+namespace Rhythia.Rulesets.Mods;
 
 public interface IApplicableToGrid : IApplicableMod
 {

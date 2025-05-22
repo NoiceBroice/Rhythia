@@ -2,7 +2,7 @@ using Godot;
 using Rhythia.Maps.Objects;
 using Rhythia.Rulesets.Mods;
 
-public class ExtendedMod : Mod, IApplicableToHitObject, IApplicableToGrid
+public class ExtendedMod : IApplicableMod, IApplicableToHitObject, IApplicableToGrid
 {
     public override string Acronym => "EX";
 

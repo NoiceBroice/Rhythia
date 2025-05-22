@@ -3,21 +3,18 @@ using Godot;
 
 namespace Rhythia.Maps.Objects;
 
-public class HitObject : IComparable
+public class HitObject : IComparable<HitObject>
 {
     public virtual int Millisecond { get; set; }
 
     public virtual int HitWindow { get; set; }
 
-    public virtual int CompareTo(object? obj)
+    public virtual int CompareTo(HitObject? obj)
     {
-        if (obj is not HitObject hitObj)
-            throw new ArgumentException($"{nameof(obj)} is not an instance of {nameof(HitObject)}");
+        if (obj is null)
+            return -1;
 
-        if (Millisecond == hitObj.Millisecond )
-            return 0;
-
-        return Millisecond > hitObj.Millisecond ? 1 : -1;
+        return Millisecond.CompareTo(obj.Millisecond);
         
     }
 

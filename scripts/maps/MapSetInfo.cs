@@ -7,7 +7,7 @@ public class MapSetInfo : IMapSetInfo
     [BsonId]
     public required ObjectId FileId { get; set; }
 
-    public required MapSetInfo Metadata { get; set; }
+    public required MapSetMetadata Metadata { get; set; }
 
     public float Difficulty { get; set; } = -1;
 

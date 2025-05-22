@@ -13,11 +13,11 @@ public class MapStorage
     public const string MAPS_COLLECTION = "maps";
 
     private readonly ILiteStorage<string> _FileStorage;
-    private readonly ILiteCollection<MapSetInfo> _MapCollection;
+    private readonly ILiteCollection<MapSetMetadata> _MapCollection;
 
     public MapStorage(ILiteDatabase liteDatabase)
     {
-        _MapCollection = liteDatabase.GetCollection<MapSetInfo>(MAPS_COLLECTION);
+        _MapCollection = liteDatabase.GetCollection<MapSetMetadata>(MAPS_COLLECTION);
     }
 
     public void LoadMapSets()
@@ -30,7 +30,7 @@ public class MapStorage
     /// </summary>
     /// <param name="mapSet"></param>
     /// <returns></returns>
-    public bool UpdateMapSet(MapSetInfo mapSet)
+    public bool UpdateMapSet(MapSetMetadata mapSet)
     {
         // TODO: Update cached files based on map update
 

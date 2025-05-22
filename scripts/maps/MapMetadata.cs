@@ -1,5 +1,6 @@
 using System.Collections.Generic;
-using Rhythia.Maps;
+
+namespace Rhythia.Maps;
 
 public class MapMetadata : IMapMetadata
 {

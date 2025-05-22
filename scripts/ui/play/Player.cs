@@ -1,6 +1,13 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
 using Godot;
+using Rhythia.IO.Format;
+using Rhythia.Maps;
+using Rhythia.Maps.Objects;
+using Rhythia.Scoring;
 
 namespace Rhythia.UI.Play;
 
@@ -17,12 +24,22 @@ public partial class Player : Node
 
     public Vector2 CursorPosition { get; private set; } = new();
 
+    private JudgementProcessor? JudgementProcessor;
+
+    private ScoreProcessor? ScoreProcessor;
+
+    private HealthProcessor? HealthProcessor;
+
     [Signal]
     public delegate void CursorPositionChangedEventHandler(Vector2 position);
 
     public override void _Ready()
     {
+        // JudgementProcessor = GameplayState.Ruleset.CreateJudgementProcessor();
+        // ScoreProcessor = GameplayState.Ruleset.CreateScoreProcessor();
+        // HealthProcessor = GameplayState.Ruleset.CreateHealthProcessor();
 
+        GetWindow().FilesDropped += OnFilesDropped;
     }
 
     public override void _Process(double delta)
@@ -34,9 +51,9 @@ public partial class Player : Node
 
         if (GameplayState.PlayingState != UserPlayingState.Playing)
             return;
-        
-        
-        
+
+
+
     }
 
     public override void _UnhandledInput(InputEvent @event)
@@ -48,15 +65,13 @@ public partial class Player : Node
 
     private void _HandleMouse(InputEventMouseMotion mouse)
     {
-        
+
 
         var xPos = Mathf.Clamp(CursorPosition.X + mouse.Relative.X, -1, 1);
 
         var yPos = Mathf.Clamp(CursorPosition.Y + mouse.Relative.Y, -1, 1);
 
         CursorPosition = new Vector2(xPos, yPos);
-
-        GD.Print(CursorPosition);
 
         EmitSignal(nameof(CursorPositionChanged), CursorPosition);
     }
@@ -72,19 +87,42 @@ public partial class Player : Node
     /// <summary>
     /// Processes camera updates
     /// </summary>
-    private void _ProcessCamera()
+    private void ProcessCamera()
     {
 
     }
 
 
-    private void _ProcessHitObjects()
+    private void ProcessHitObjects()
     {
 
     }
 
-    private void _ProcessHUD()
+    private void ProcessHUD()
     {
 
+    }
+
+    private void OnFilesDropped(string[] files)
+    {
+        foreach (var file in files)
+        {
+            Stream fileStream = File.OpenRead(file);
+
+            var map = Decoder.GetDecoder<Map>(Path.GetExtension(file)).Decode(fileStream);
+            int count = 10;
+            foreach (var hitObject in map.HitObjects)
+            {
+                count--;
+                if (hitObject is Note note)
+                {
+                    GD.Print(note.Millisecond);
+                    GD.Print(note.Position);
+                }
+
+                if (count < 0)
+                    return;
+            }
+        }
     }
 }

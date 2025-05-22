@@ -105,9 +105,9 @@ public class StreamParser
 
     public byte[] Read(long count)
     {
-        byte[] buffer = new byte[count];
+        var buffer = new byte[(int)count];
 
-        Stream.Read(buffer);
+        Stream.Read(buffer, 0, (int)count);
 
         return buffer;
     }

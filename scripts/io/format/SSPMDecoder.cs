@@ -15,7 +15,7 @@ public class SSPMDecoder : Decoder<Map>
 
     public static void Register()
     {
-        AddDecoder<Map>("sspm", (_) => new SSPMDecoder());
+        AddDecoder<Map>(".sspm", (_) => new SSPMDecoder());
     }
 
     public override Map Decode(Stream stream)
@@ -160,7 +160,6 @@ public class SSPMDecoder : Decoder<Map>
 
             parser.Seek(4, SeekOrigin.Current); // marker count
 
-            var markerCount = parser.ReadUInt32();
             var difficulty = parser.ReadByte();
 
             var starRating = parser.ReadUInt16();
@@ -237,7 +236,7 @@ public class SSPMDecoder : Decoder<Map>
             // parser.Seek((long)markerDefinitionOffset, SeekOrigin.Begin);
             // var definition = parser.ReadByte();
 
-            parser.Seek((long)markerDataOffset, SeekOrigin.Current);
+            parser.Seek((long)markerDataOffset, SeekOrigin.Begin);
 
             HitObject[] hitObjects = new HitObject[noteCount]; // Only caring about notes
 
@@ -264,9 +263,11 @@ public class SSPMDecoder : Decoder<Map>
                 hitObjects[i] = new Note(millisecond, position);
             }
 
+            Array.Sort(hitObjects);
+
             map.Audio = audioBuffer;
             map.Cover = coverBuffer;
-            map.HitObjects = [ ..hitObjects ];
+            map.HitObjects = hitObjects.ToList();
         }
         catch
         {

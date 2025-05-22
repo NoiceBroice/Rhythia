@@ -1,6 +1,6 @@
 using System;
 
-public abstract class Mod : IMod, IEquatable<Mod>
+public abstract class IApplicableMod : IMod, IEquatable<IApplicableMod>
 {
     public virtual string Description => "Description of mod";
 
@@ -10,7 +10,7 @@ public abstract class Mod : IMod, IEquatable<Mod>
 
     public virtual string Acronym => "MD";
 
-    public bool Equals(Mod? other)
+    public bool Equals(IApplicableMod? other)
     {
         if (ReferenceEquals(null, other)) return false;
         if (ReferenceEquals(this, other)) return true;

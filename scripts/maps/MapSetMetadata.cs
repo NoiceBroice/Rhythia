@@ -3,7 +3,7 @@ using Rhythia.Maps;
 
 namespace Rhythia.Maps;
 
-public class MapSetInfo : IMapSetMetadata
+public class MapSetMetadata : IMapSetMetadata
 {
     public int Version => throw new System.NotImplementedException();
 

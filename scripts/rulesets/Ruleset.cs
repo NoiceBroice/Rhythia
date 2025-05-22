@@ -9,6 +9,11 @@ public class Ruleset : IRulesetInfo
 
     public string ShortName => throw new System.NotImplementedException();
 
+    public JudgementProcessor CreateJudgementProcessor()
+    {
+        throw new NotImplementedException();
+    }
+
     public ScoreProcessor CreateScoreProcessor()
     {
         throw new NotImplementedException();
