@@ -1,40 +1,102 @@
 using System;
+using System.Collections;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
+using LiteDB;
 using Rhythia.Maps;
 
 namespace Rhythia.IO;
 
 public class MapStorage 
 {
-    public const string DEFUALT_SONGS_PATH = "maps";
+    public const string MAPS_COLLECTION = "maps";
 
-    private string MapPath;
+    private readonly ILiteStorage<string> _FileStorage;
+    private readonly ILiteCollection<MapSetInfo> _MapCollection;
 
-    public MapStorage(string path)
+    public MapStorage(ILiteDatabase liteDatabase)
     {
-        MapPath = path == string.Empty ? $"user://{DEFUALT_SONGS_PATH}" : path;
-        Debug.Assert(MapPath != null); // Should never be null but ¯\_(ツ)_/¯
+        _MapCollection = liteDatabase.GetCollection<MapSetInfo>(MAPS_COLLECTION);
     }
 
-    public Task LoadMapSets(Action<IMapSetInfo> onMapSetLoaded)
+    public void LoadMapSets()
     {
-        throw new NotImplementedException();
+        _MapCollection.Query().Where("*").Select("*");
     }
 
-    public IMapSetInfo? GetMapSet(string name)
+    /// <summary>
+    /// Update the mapSet
+    /// </summary>
+    /// <param name="mapSet"></param>
+    /// <returns></returns>
+    public bool UpdateMapSet(MapSetInfo mapSet)
     {
-        throw new NotImplementedException();
+        // TODO: Update cached files based on map update
+
+        return _MapCollection.Update(mapSet);
     }
 
-    public Map GetMap(IMapSetInfo mapSetInfo, string difficultyName)
+    public bool GetMapCover(MapInfo mapInfo, Stream cover)
     {
-        throw new NotImplementedException();
+        Debug.Assert(mapInfo.MapSet != null);
+
+        var info = _FileStorage.FindById($"{mapInfo.MapSet.FileId}/{mapInfo.Metadata.DifficultyName}/cover.png");
+
+        if (info != null)
+            info.CopyTo(cover);
+        
+        return info != null;
     }
 
-    public bool IsValid()
+    public bool GetMapAudio(MapInfo mapInfo, Stream audio)
     {
-        throw new NotImplementedException();
+        Debug.Assert(mapInfo.MapSet != null);
+
+        var info = _FileStorage.FindById($"{mapInfo.MapSet.FileId}/{mapInfo.Metadata.DifficultyName}/audio.{mapInfo.Metadata.AudioExtension}");
+        
+        if (info != null)
+            info.CopyTo(audio);
+        
+        return info != null;
+    }
+
+    public bool GetMapVideo(MapInfo mapInfo, Stream video)
+    {
+        Debug.Assert(mapInfo.MapSet != null);
+
+        var info = _FileStorage.FindById($"{mapInfo.MapSet.FileId}/{mapInfo.Metadata.DifficultyName}/video.mp4");
+        
+        if (info != null)
+            info.CopyTo(video);
+        
+        return info != null;
+    }
+
+    public bool SetMapCover(MapInfo mapInfo, Stream cover)
+    {
+        Debug.Assert(mapInfo.MapSet != null);
+
+        var info = _FileStorage.Upload($"{mapInfo.MapSet.FileId}/{mapInfo.Metadata.DifficultyName}/cover.png", "cover.png", cover);
+        
+        return info != null;
+    }
+    
+    public bool SetMapAudio(MapInfo mapInfo, Stream audio)
+    {
+        Debug.Assert(mapInfo.MapSet != null);
+
+        var info = _FileStorage.Upload($"{mapInfo.MapSet.FileId}/{mapInfo.Metadata.DifficultyName}/cover.png", "cover.png", audio);
+        
+        return info != null;
+    }
+
+    public bool SetMapVideo(MapInfo mapInfo, Stream video)
+    {
+        Debug.Assert(mapInfo.MapSet != null);
+
+        var info = _FileStorage.Upload($"{mapInfo.MapSet.FileId}/{mapInfo.Metadata.DifficultyName}/cover.png", "cover.png", video);
+        
+        return info != null;
     }
 }

@@ -1,11 +1,22 @@
-using Rhythia.IO;
+using System;
+using LiteDB;
 
-public class Storage
+namespace Rhythia.IO;
+
+/// <summary>
+/// Handles local folder and database
+/// </summary>
+public class Storage : LiteDatabase
 {
-    private MapStorage MapStorage;
-
-    public Storage(string mapPath)
+    public Storage(string connectionString, BsonMapper? mapper = null) : base(connectionString, mapper)
     {
-        MapStorage = new MapStorage(mapPath);
+
+    }
+
+    public static string DefaultConnection()
+    {
+        return Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
+        + $"/{(string)Godot.ProjectSettings.GetSetting("application/config/name")}"
+        + "/data.db";
     }
 }

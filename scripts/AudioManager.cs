@@ -1,6 +1,9 @@
+using Godot;
+
 namespace Rhythia;
 
-public class AudioManager
+public partial class AudioManager : Node
 {
+    public static AudioManager Singleton => (AudioManager)((SceneTree)Engine.GetMainLoop()).Root.GetNode("/root/AudioManager");
     
 }

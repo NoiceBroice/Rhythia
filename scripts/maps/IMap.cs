@@ -11,7 +11,7 @@ public interface IMap
 
     public IList<string> ColorSet { get; }
 
-    public List<MapObject> Objects { get; }
+    public IReadOnlyList<HitObject> HitObjects { get; }
 
     public IMapMetadata Metadata { get; }
 }

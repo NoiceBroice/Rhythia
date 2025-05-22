@@ -59,7 +59,7 @@ public partial class GameplayState
     /// </summary>
     public bool HasCompleted => HasPassed || HasFailed || HasQuit;
 
-    public IBindable<UserPlayingState> PlayingState { get; } = new Bindable<UserPlayingState>();
+    public UserPlayingState PlayingState { get; } = UserPlayingState.NotPlaying;
 
 
     public GameplayState(

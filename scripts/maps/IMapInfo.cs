@@ -1,4 +1,5 @@
 using System;
+using LiteDB;
 
 namespace Rhythia.Maps;
 
@@ -15,6 +16,8 @@ public interface IMapInfo : IEquatable<IMapInfo>
     /// <summary>
     /// The MapSet this map is part of
     /// </summary>
+    
+    [BsonIgnore]
     IMapSetInfo? MapSet { get; }
 
     /// <summary>

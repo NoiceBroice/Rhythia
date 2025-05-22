@@ -1,6 +1,8 @@
+using Godot;
+
 namespace Rhythia.Scoring;
 
-public class HealthProcessor
+public partial class HealthProcessor : Node
 {
 
 }

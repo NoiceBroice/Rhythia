@@ -3,7 +3,9 @@ using System.IO.Compression;
 
 namespace Rhythia.Maps;
 
-public interface IMapSetInfo
+public interface IMapSetInfo : IHasFileId
 {
+    public IMapSetMetadata Metadata { get; }
 
+    public float Difficulty { get; }
 }

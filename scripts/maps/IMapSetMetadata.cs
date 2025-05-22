@@ -10,9 +10,11 @@ public interface IMapSetMetadata
 
     public string Artist { get; }
 
+    public string RomanizedArtist { get; }
+
     public string Title { get; }
 
     public string RomanizedTitle { get; }
 
-    public List<string> Difficulties { get; }
+    public IList<IMapInfo> Difficulties { get; }
 }

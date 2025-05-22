@@ -12,9 +12,9 @@ public abstract class Decoder<TOutput> : Decoder
     /// <summary>
     /// Decodes an object
     /// </summary>
-    /// <param name="path">Path of file / directory to parse</param>
+    /// <param name="stream">Stream of data to parse</param>
     /// <returns></returns>
-    public abstract TOutput Decode(string path);
+    public abstract TOutput Decode(Stream stream);
 }
 
 /// <summary>

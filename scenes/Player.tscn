@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=3 uid="uid://c33858g51ojxk"]
+
+[ext_resource type="Script" uid="uid://dl324jvs252d" path="res://scripts/ui/play/Player.cs" id="1_v6fml"]
+[ext_resource type="Script" uid="uid://b4rnl4hnbtrms" path="res://scripts/ui/play/PlayScreen.cs" id="2_70d11"]
+[ext_resource type="Script" uid="uid://iro5udbph41n" path="res://scripts/ui/play/Camera.cs" id="3_cw2d6"]
+[ext_resource type="Texture2D" uid="uid://dho713jhwbw5g" path="res://assets/grid.png" id="4_khinc"]
+[ext_resource type="Script" uid="uid://w38kp0s8vpbo" path="res://scripts/ui/play/Grid.cs" id="5_70d11"]
+[ext_resource type="Texture2D" uid="uid://wmokhg0ge5m8" path="res://assets/cursor.png" id="6_6eyey"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qnccb"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("4_khinc")
+
+[sub_resource type="QuadMesh" id="QuadMesh_pennv"]
+material = SubResource("StandardMaterial3D_qnccb")
+size = Vector2(4, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pennv"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("6_6eyey")
+
+[sub_resource type="QuadMesh" id="QuadMesh_samdx"]
+material = SubResource("StandardMaterial3D_pennv")
+size = Vector2(0.25, 0.25)
+
+[node name="Player" type="Node"]
+script = ExtResource("1_v6fml")
+
+[node name="PlayScreen" type="Node3D" parent="." node_paths=PackedStringArray("Grid", "HUD", "Camera")]
+script = ExtResource("2_70d11")
+Grid = NodePath("Grid")
+HUD = NodePath("HUD")
+Camera = NodePath("Camera")
+
+[node name="Camera" type="Camera3D" parent="PlayScreen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.5)
+fov = 70.0
+script = ExtResource("3_cw2d6")
+
+[node name="HUD" type="Node3D" parent="PlayScreen"]
+
+[node name="Grid" type="MeshInstance3D" parent="PlayScreen"]
+mesh = SubResource("QuadMesh_pennv")
+script = ExtResource("5_70d11")
+
+[node name="Cursor" type="MeshInstance3D" parent="PlayScreen/Grid"]
+mesh = SubResource("QuadMesh_samdx")
+
+[node name="Note" type="Node3D" parent="PlayScreen/Grid"]
+
+[node name="Overlay" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="Overlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1680.0
+offset_bottom = -736.0
+grow_horizontal = 2
+grow_vertical = 2

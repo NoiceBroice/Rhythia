@@ -2,7 +2,7 @@ using Godot;
 
 namespace Rhythia.Maps.Objects;
 
-public class Note : MapObject
+public class Note : HitObject
 {
     public Vector2 Position { get; set; }
 
@@ -20,8 +20,20 @@ public class Note : MapObject
         set => Position = new Vector2(Position.X, value);
     }
 
+    public Note()
+    {
+        
+    }
+
     public Note(int millisecond, float x, float y)
     {
+        Millisecond = millisecond;
+        Position = new Vector2(x, y);
+    }
 
+    public Note(int millisecond, Vector2 position)
+    {
+        Millisecond = millisecond;
+        Position = position;
     }
 }
