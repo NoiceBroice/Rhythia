@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://dl324jvs252d" path="res://scripts/ui/play/Player.cs" id="1_v6fml"]
 [ext_resource type="Script" uid="uid://b4rnl4hnbtrms" path="res://scripts/ui/play/PlayScreen.cs" id="2_70d11"]
 [ext_resource type="Script" uid="uid://iro5udbph41n" path="res://scripts/ui/play/Camera.cs" id="3_cw2d6"]
-[ext_resource type="Texture2D" uid="uid://dho713jhwbw5g" path="res://assets/grid.png" id="4_khinc"]
+[ext_resource type="Texture2D" uid="uid://dho713jhwbw5g" path="res://assets/gameplay/grid.png" id="4_khinc"]
 [ext_resource type="Script" uid="uid://w38kp0s8vpbo" path="res://scripts/ui/play/Grid.cs" id="5_70d11"]
-[ext_resource type="Texture2D" uid="uid://wmokhg0ge5m8" path="res://assets/cursor.png" id="6_6eyey"]
+[ext_resource type="Texture2D" uid="uid://wmokhg0ge5m8" path="res://assets/gameplay/cursor.png" id="6_6eyey"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qnccb"]
 transparency = 1

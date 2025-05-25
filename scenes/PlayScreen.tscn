@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://bolw44wos8gd0"]
 
-[ext_resource type="Texture2D" uid="uid://dho713jhwbw5g" path="res://assets/grid.png" id="1_iani1"]
+[ext_resource type="Texture2D" uid="uid://dho713jhwbw5g" path="res://assets/gameplay/grid.png" id="1_iani1"]
 [ext_resource type="Script" uid="uid://b4rnl4hnbtrms" path="res://scripts/ui/play/PlayScreen.cs" id="1_samdx"]
-[ext_resource type="Texture2D" uid="uid://wmokhg0ge5m8" path="res://assets/cursor.png" id="2_qnccb"]
+[ext_resource type="Texture2D" uid="uid://wmokhg0ge5m8" path="res://assets/gameplay/cursor.png" id="2_qnccb"]
 [ext_resource type="Script" uid="uid://iro5udbph41n" path="res://scripts/ui/play/Camera.cs" id="2_vfrtd"]
 [ext_resource type="Script" uid="uid://w38kp0s8vpbo" path="res://scripts/ui/play/Grid.cs" id="4_djg5m"]
 

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://lfkqqtg0in6h"]
+
+[ext_resource type="Theme" uid="uid://u4ow6wssdvm4" path="res://themes/default/default_theme.tres" id="1_i47rn"]
+[ext_resource type="StyleBox" uid="uid://qiagiil3mxc2" path="res://themes/default/jukebox/normal_jukebox.tres" id="2_xbi2f"]
+
+[node name="Settings" type="Panel"]
+anchors_preset = -1
+anchor_right = 0.217
+anchor_bottom = 0.081
+offset_right = 1031.36
+offset_bottom = 725.52
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_i47rn")
+theme_override_styles/panel = ExtResource("2_xbi2f")
